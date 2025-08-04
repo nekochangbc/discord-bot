@@ -109,7 +109,7 @@ const commands = [
 
 const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_BOT_TOKEN);
 
-(async () => {
+async function main() {
   try {
     console.log('📥 スラッシュコマンドを登録中...');
     await initDB();
@@ -118,10 +118,14 @@ const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_BOT_TOKEN)
       { body: commands }
     );
     console.log('✅ スラッシュコマンド登録完了！');
+
+    await client.login(process.env.DISCORD_BOT_TOKEN);  // ← ここで await！
   } catch (err) {
-    console.error(err);
+    console.error('❌ 起動中にエラーが発生しました:', err);
   }
-})();
+}
+
+main();  // ← 明示的に呼び出す
 
 // イベント処理
 client.on(Events.InteractionCreate, async interaction => {
