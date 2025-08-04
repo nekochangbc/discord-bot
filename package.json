@@ -1,0 +1,14 @@
+{
+  "name": "discord-stats-bot",
+  "version": "1.0.0",
+  "main": "code.js",
+  "type": "module",
+  "scripts": {
+    "start": "node code.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.11.0",
+    "dotenv": "^16.3.1",
+    "pg": "^8.11.3"
+  }
+}
